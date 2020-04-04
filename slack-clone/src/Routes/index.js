@@ -1,12 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ApolloClient from 'apollo-boost';
+import { gql } from "apollo-boost";
 
-function App() {
+const client = new ApolloClient({
+    uri: 'https://localhost:8080/graphql',
+});
+
+client
+    .query({
+        query: gql`
+      {
+        getAllUsers() {
+          username
+        }
+      }
+    `
+    })
+    .then(result => console.log(result));
+
+function Index() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -23,4 +38,4 @@ function App() {
   );
 }
 
-export default App;
+export default Index;
