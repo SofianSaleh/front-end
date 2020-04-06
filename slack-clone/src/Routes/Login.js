@@ -6,7 +6,7 @@ import { observer } from "mobx-react";
 import { gql } from "apollo-boost";
 import { graphql } from "@apollo/react-hoc";
 
-import { Button, Input, Container, Header } from "semantic-ui-react";
+import { Form, Button, Input, Container, Header } from "semantic-ui-react";
 
 class Login extends React.Component {
   constructor(props) {
@@ -23,6 +23,11 @@ class Login extends React.Component {
     const response = await this.props.mutate({
       variables: { email, password },
     });
+    const { success, token, refreshToken } = response.data.login;
+    if (success) {
+      localStorage.setItem("token", token);
+      localStorage.setItem("refreshToken", refreshToken);
+    }
   };
 
   onChange = (e) => {
