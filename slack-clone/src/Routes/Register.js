@@ -11,23 +11,23 @@ class Register extends Component {
     email: "",
     emailError: "",
     password: "",
-    passwordError: ""
+    passwordError: "",
   };
 
-  onChange = e => {
+  onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmit = async e => {
+  onSubmit = async (e) => {
     e.preventDefault();
     this.setState({
       usernameError: "",
       emailError: "",
-      passwordError: ""
+      passwordError: "",
     });
     const { username, email, password } = this.state;
     const response = await this.props.mutate({
-      variables: { username, email, password }
+      variables: { username, email, password },
     });
     const { success, errors } = response.data.register;
     if (success) {
@@ -48,7 +48,7 @@ class Register extends Component {
       password,
       usernameError,
       emailError,
-      passwordError
+      passwordError,
     } = this.state;
 
     const errorsList = [];
@@ -60,7 +60,7 @@ class Register extends Component {
       <Container text>
         <Header as="h2">Register</Header>
         <Input
-          error={usernameError}
+          error={!!usernameError}
           name={"username"}
           onChange={this.onChange.bind(this)}
           value={username}
@@ -68,7 +68,7 @@ class Register extends Component {
           fluid
         />
         <Input
-          error={emailError}
+          error={!!emailError}
           name={"email"}
           onChange={this.onChange.bind(this)}
           value={email}
@@ -76,7 +76,7 @@ class Register extends Component {
           fluid
         />
         <Input
-          error={passwordError}
+          error={!!passwordError}
           name={"password"}
           onChange={this.onChange.bind(this)}
           value={password}
