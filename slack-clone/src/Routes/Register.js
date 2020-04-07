@@ -2,7 +2,14 @@ import React, { Component } from "react";
 
 import { gql } from "apollo-boost";
 import { graphql } from "@apollo/react-hoc";
-import { Message, Container, Input, Header, Button } from "semantic-ui-react";
+import {
+  Form,
+  Message,
+  Container,
+  Input,
+  Header,
+  Button,
+} from "semantic-ui-react";
 
 class Register extends Component {
   state = {
@@ -59,35 +66,41 @@ class Register extends Component {
     return (
       <Container text>
         <Header as="h2">Register</Header>
-        <Input
-          error={!!usernameError}
-          name={"username"}
-          onChange={this.onChange.bind(this)}
-          value={username}
-          placeholder={"Username"}
-          fluid
-        />
-        <Input
-          error={!!emailError}
-          name={"email"}
-          onChange={this.onChange.bind(this)}
-          value={email}
-          placeholder={"Email"}
-          fluid
-        />
-        <Input
-          error={!!passwordError}
-          name={"password"}
-          onChange={this.onChange.bind(this)}
-          value={password}
-          type="password"
-          placeholder={"Password"}
-          fluid
-        />
-        <Button onClick={this.onSubmit.bind(this)} primary>
-          Submit
-        </Button>
-        {usernameError || emailError || passwordError ? (
+        <Form>
+          <Form.Field error={!!usernameError}>
+            <Input
+              name={"username"}
+              onChange={this.onChange.bind(this)}
+              value={username}
+              placeholder={"Username"}
+              fluid
+            />
+          </Form.Field>
+          <Form.Field error={!!emailError}>
+            <Input
+              name={"email"}
+              onChange={this.onChange.bind(this)}
+              value={email}
+              placeholder={"Email"}
+              fluid
+            />
+          </Form.Field>
+          <Form.Field error={!!passwordError}>
+            <Input
+              name={"password"}
+              onChange={this.onChange.bind(this)}
+              value={password}
+              type="password"
+              placeholder={"Password"}
+              fluid
+            />
+          </Form.Field>
+
+          <Button onClick={this.onSubmit.bind(this)} primary>
+            Submit
+          </Button>
+        </Form>
+        {errorsList.length ? (
           <Message
             error
             header="There was some errors in your submission"
