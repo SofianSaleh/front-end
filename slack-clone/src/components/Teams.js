@@ -9,14 +9,39 @@ const TeamWrapper = styled.div`
   color: #958993;
 `;
 
-const team = ({ id, name }) => <li key={`user-${id}`}>{name}</li>;
+const TeamList = styled.ul`
+  width: 100%;
+  padding-left: 0px;
+  list-style: none;
+`;
+
+const TeamListItem = styled.li`
+  height: 50px;
+  width: 50px;
+  background-color: #676066;
+  color: #fff;
+  margin: auto;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border-radius: 11px;
+  &:hover {
+    border-style: solid;
+    border-width: thick;
+    border-color: #767676;
+  }
+`;
+
+const team = ({ id, name }) => (
+  <TeamListItem key={`user-${id}`}>{name}</TeamListItem>
+);
 
 export default ({ teams }) => {
   return (
     <TeamWrapper>
-      <div>
-        <ul>{teams.map(team)}</ul>
-      </div>
+      <TeamList>{teams.map(team)}</TeamList>
     </TeamWrapper>
   );
 };
