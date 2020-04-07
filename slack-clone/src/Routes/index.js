@@ -6,6 +6,7 @@ import Register from "./Register";
 import Login from "./Login";
 import CreateTeam from "./CreateTeam";
 import PrivateRoute from "../Helpers/PrivateRoute";
+import ViewTeam from "./ViewTeam";
 
 export default () => (
   <BrowserRouter>
@@ -13,6 +14,7 @@ export default () => (
       <Route path="/" exact component={Home} />
       <Route path="/register" exact component={Register} />
       <Route path="/login" exact component={Login} />
+      <Route path="/view-team" exact component={ViewTeam} />
       <PrivateRoute path="/create-team" exact component={CreateTeam} />
     </Switch>
   </BrowserRouter>
