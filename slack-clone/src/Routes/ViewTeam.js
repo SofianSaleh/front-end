@@ -19,7 +19,6 @@ export default () => (
     <Channels
       teamName="One"
       username="Sofian"
-      username="Sofian"
       channels={[
         { id: 1, name: "Genral" },
         { id: 2, name: "Genral 1" },
