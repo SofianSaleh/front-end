@@ -9,8 +9,8 @@ const Home = () => {
   if (error) return <p>Error :(</p>;
 
   return data.getAllUsers.map((user) => (
-    <div>
-      <h1 key={user.id}>{user.username}</h1>
+    <div  key={user.id}>
+      <h1>{user.username}</h1>
     </div>
   ));
 };

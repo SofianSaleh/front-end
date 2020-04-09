@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 
@@ -35,7 +36,9 @@ const TeamListItem = styled.li`
 `;
 
 const team = ({ id, name }) => (
-  <TeamListItem key={`user-${id}`}>{name}</TeamListItem>
+  <Link key={`user-${id}`} to={`/view-team/${id}`}>
+    <TeamListItem>{name}</TeamListItem>
+  </Link>
 );
 
 export default ({ teams }) => {
