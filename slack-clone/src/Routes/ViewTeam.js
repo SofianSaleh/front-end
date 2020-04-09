@@ -16,6 +16,6 @@ export default () => (
         <li />
       </ul>
     </Messages>
-    <SendMessage channelname="general" />>
+    <SendMessage channelName="general" />>
   </AppLayout>
 );

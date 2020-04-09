@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import { gql } from "apollo-boost";
 import { graphql } from "@apollo/react-hoc";
@@ -14,7 +14,7 @@ const Sidebar = ({ data: { loading, allTeams }, currentTeamId }) => {
     return null;
   }
   console.log(allTeams);
-  const teamIdx = _.findIndex(allTeams, ["id", 3]);
+  const teamIdx = _.findIndex(allTeams, ["id", currentTeamId]);
   const team = allTeams[teamIdx];
   let username = "";
 
