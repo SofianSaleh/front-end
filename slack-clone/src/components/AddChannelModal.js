@@ -55,11 +55,11 @@ export default graphql(createChannelMutation)(
       { props: { onClose, teamId, mutate }, setSubmitting }
     ) => {
       const response = await mutate({
-        variables: { teamId, name: values.name },
+        variables: { teamId: parseInt(teamId), name: values.name },
       });
       console.log(response);
-      setSubmitting(false);
       onClose();
+      setSubmitting(false);
     },
   })(AddChannelModal)
 );
